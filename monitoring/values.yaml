@@ -31,6 +31,7 @@ alertmanager:
     global: {resolve_timeout: 1m}
     route:
       receiver: local
+      routes: []
       group_by: [alertname, namespace]
       group_wait: 10s
       group_interval: 30s
