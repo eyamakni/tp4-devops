@@ -4,7 +4,7 @@ namespace: demo
 resources: [../../base]
 replicas:
 - name: demo
-  count: 4
+  count: 2
 images:
 - name: python
   newTag: 3.12.12-slim-bookworm
