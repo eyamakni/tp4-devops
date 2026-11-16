@@ -14,9 +14,15 @@ spec:
     targetRevision: main
     ref: values
   destination: {server: 'https://kubernetes.default.svc', namespace: monitoring}
+  ignoreDifferences:
+  - group: ''
+    kind: Secret
+    name: monitoring-grafana
+    namespace: monitoring
+    jsonPointers: [/data/admin-password]
   syncPolicy:
     automated: {prune: true, selfHeal: true}
-    syncOptions: [CreateNamespace=true, ServerSideApply=true]
+    syncOptions: [CreateNamespace=true, ServerSideApply=true, RespectIgnoreDifferences=true]
     retry:
       limit: 5
       backoff: {duration: 10s, factor: 2, maxDuration: 2m}

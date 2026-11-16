@@ -21,8 +21,8 @@ Invoke-Checked kubectl @('apply','-f','argocd/demo.yaml')
 # Attendre que l'application Helm ait cree les CRD, avant les ressources custom.
 $deadline = (Get-Date).AddMinutes(10)
 do {
-    & kubectl get crd servicemonitors.monitoring.coreos.com 2>$null | Out-Null
-    $ready = $LASTEXITCODE -eq 0
+    $crd = & kubectl get crd servicemonitors.monitoring.coreos.com --ignore-not-found -o name
+    $ready = ($LASTEXITCODE -eq 0) -and [bool]$crd
     if (-not $ready) { Start-Sleep -Seconds 5 }
 } until ($ready -or (Get-Date) -ge $deadline)
 if (-not $ready) { throw 'CRD ServiceMonitor absente apres 10 minutes. Verifier monitoring dans ArgoCD.' }
