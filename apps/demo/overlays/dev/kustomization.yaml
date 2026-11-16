@@ -7,4 +7,4 @@ replicas:
   count: 4
 images:
 - name: python
-  newTag: 3.12.12-slim-bookworm
+  newTag: tp4-image-inexistante
