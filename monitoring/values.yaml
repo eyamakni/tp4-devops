@@ -43,3 +43,8 @@ kubeEtcd: {enabled: false}
 kubeControllerManager: {enabled: false}
 kubeScheduler: {enabled: false}
 kubeProxy: {enabled: false}
+
+# Profil local : eviter les jobs de certificats Helm pre/post-sync.
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
