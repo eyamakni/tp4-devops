@@ -76,7 +76,33 @@
           "displayMode": "list",
           "placement": "bottom"
         }
-      }
+      },
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "name",
+                "sync_status",
+                "health_status",
+                "autosync_enabled"
+              ]
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "renameByName": {
+              "name": "Application",
+              "sync_status": "Sync Status",
+              "health_status": "Health Status",
+              "autosync_enabled": "Auto-sync"
+            }
+          }
+        }
+      ]
     },
     {
       "id": 2,
