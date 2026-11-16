@@ -67,7 +67,7 @@ powershell -File scripts/access.ps1 demo
 | Service | Adresse | Utilisateur |
 |---|---|---|
 | ArgoCD | https://localhost:8080 | admin |
-| Grafana | http://localhost:3000 | admin |
+| Grafana | http://localhost:3001 | admin |
 | Prometheus | http://localhost:9090 | accès local |
 | Alertmanager | http://localhost:9093 | accès local |
 | API | http://localhost:8081 | /, /healthz, /metrics, /error |

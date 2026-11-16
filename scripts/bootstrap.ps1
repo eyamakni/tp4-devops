@@ -16,6 +16,8 @@ Invoke-Checked kubectl @('cluster-info','--request-timeout=10s')
 Invoke-Checked kubectl @('apply','--server-side','--force-conflicts','-k','bootstrap/argocd')
 Invoke-Checked kubectl @('wait','--for=condition=Established','crd/applications.argoproj.io','--timeout=120s')
 Invoke-Checked kubectl @('-n','argocd','rollout','status','deployment/argocd-server','--timeout=300s')
+Invoke-Checked kubectl @('-n','argocd','rollout','status','deployment/argocd-repo-server','--timeout=300s')
+Invoke-Checked kubectl @('-n','argocd','rollout','status','deployment/argocd-redis','--timeout=300s')
 Invoke-Checked kubectl @('apply','-f','argocd/monitoring.yaml')
 Invoke-Checked kubectl @('apply','-f','argocd/demo.yaml')
 # Attendre que l'application Helm ait cree les CRD, avant les ressources custom.
