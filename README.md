@@ -122,7 +122,7 @@ kubectl -n monitoring get servicemonitors,prometheusrules
 
 L'API est fournie par ConfigMap pour éviter un registry personnel. Son hash déclenche le rollout à chaque changement. En production : image immuable, signée, identifiée par digest. Les anciens pods peuvent continuer à servir pendant une erreur de téléchargement d'image ; un ImagePullBackOff n'implique pas de redémarrage.
 
-Profil local : stockage éphémère, pas de HA ni notification externe, projet ArgoCD default permissif, endpoints control plane non exposés par Kind désactivés. En production : versions maintenues, stockage persistant, SSO/TLS, projets/RBAC minimaux, NetworkPolicy et secrets externes. Les port-forward sont liés à 127.0.0.1. Ne jamais commiter de credentials ni de captures contenant des secrets.
+Profil local : stockage éphémère, pas de HA ni notification externe, projet ArgoCD default permissif, endpoints control plane non exposés par Kind et webhook d'admission optionnel de l'Operator désactivés (voir docs/VALIDATION.md). En production : versions maintenues, stockage persistant, SSO/TLS, projets/RBAC minimaux, NetworkPolicy et secrets externes. Les port-forward sont liés à 127.0.0.1. Ne jamais commiter de credentials ni de captures contenant des secrets.
 
 ## Références officielles
 

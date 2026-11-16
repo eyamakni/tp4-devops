@@ -32,3 +32,8 @@ print('OK : trois regles TP4 chargees et saines')
 with urllib.request.urlopen('http://127.0.0.1:3001/api/health', timeout=15) as response:
     assert json.load(response)['database']=='ok'
 print('OK : Grafana disponible')
+
+with urllib.request.urlopen('http://127.0.0.1:9093/-/ready', timeout=15) as response:
+    assert response.status == 200
+assert get('/api/v1/alertmanagers')['activeAlertmanagers'], 'Aucun Alertmanager decouvert'
+print('OK : Alertmanager pret et decouvert par Prometheus')

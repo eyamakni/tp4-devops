@@ -1,0 +1,190 @@
+[
+  {
+    "time": "2026-11-16T17:28:30.095050+00:00",
+    "step": "demo: scenario 1 quatre replicas",
+    "data": "0bca9697c3abbc21184d7b77a7d85b063fb656e7"
+  },
+  {
+    "time": "2026-11-16T17:28:46.896516+00:00",
+    "step": "scenario 1 CD",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:28:46.993654+00:00",
+    "step": "scenario 1 etat",
+    "data": {
+      "sync": "Synced",
+      "health": "Healthy",
+      "revision": "0bca9697c3abbc21184d7b77a7d85b063fb656e7"
+    }
+  },
+  {
+    "time": "2026-11-16T17:28:57.572632+00:00",
+    "step": "scenario 2 self-healing",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:28:57.679776+00:00",
+    "step": "scenario 2 etat",
+    "data": {
+      "sync": "Synced",
+      "health": "Healthy",
+      "revision": "0bca9697c3abbc21184d7b77a7d85b063fb656e7"
+    }
+  },
+  {
+    "time": "2026-11-16T17:29:00.816499+00:00",
+    "step": "demo: scenario 3 image invalide",
+    "data": "d48d24942bc747416c78d82fbb26304d183c1d16"
+  },
+  {
+    "time": "2026-11-16T17:30:52.839343+00:00",
+    "step": "scenario 3 Synced Degraded",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:30:52.936506+00:00",
+    "step": "scenario 3 etat",
+    "data": {
+      "sync": "Synced",
+      "health": "Degraded",
+      "revision": "d48d24942bc747416c78d82fbb26304d183c1d16"
+    }
+  },
+  {
+    "time": "2026-11-16T17:35:24.144884+00:00",
+    "step": "scenario 5 alerte Firing",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:35:24.157763+00:00",
+    "step": "scenario 5 alerte",
+    "data": [
+      {
+        "metric": {
+          "__name__": "ALERTS",
+          "alertname": "DemoContainerBlocked",
+          "alertstate": "pending",
+          "container": "demo",
+          "namespace": "demo",
+          "pod": "demo-6f5d4f6586-4dk65",
+          "reason": "ImagePullBackOff",
+          "severity": "critical"
+        },
+        "value": [
+          1794850524.155,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "ALERTS",
+          "alertname": "ArgoCDApplicationDegraded",
+          "alertstate": "firing",
+          "autosync_enabled": "true",
+          "container": "argocd-application-controller",
+          "dest_namespace": "demo",
+          "dest_server": "https://kubernetes.default.svc",
+          "endpoint": "metrics",
+          "exported_namespace": "argocd",
+          "health_status": "Degraded",
+          "instance": "10.244.0.11:8082",
+          "job": "argocd-metrics",
+          "name": "demo",
+          "namespace": "argocd",
+          "pod": "argocd-application-controller-0",
+          "project": "default",
+          "repo": "https://github.com/eyamakni/tp4-devops",
+          "service": "argocd-metrics",
+          "severity": "critical",
+          "sync_status": "Synced"
+        },
+        "value": [
+          1794850524.155,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "ALERTS",
+          "alertname": "DemoContainerBlocked",
+          "alertstate": "firing",
+          "container": "demo",
+          "namespace": "demo",
+          "pod": "demo-6f5d4f6586-cb4mc",
+          "reason": "ImagePullBackOff",
+          "severity": "critical"
+        },
+        "value": [
+          1794850524.155,
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "time": "2026-11-16T17:35:35.009764+00:00",
+    "step": "scenario 4 rollback sain",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:35:35.206333+00:00",
+    "step": "scenario 4 rollback API",
+    "data": {
+      "sync": "OutOfSync",
+      "health": "Healthy",
+      "revision": "78475fadec2d2746465c89626ca3281aad378c73"
+    }
+  },
+  {
+    "time": "2026-11-16T17:35:48.923913+00:00",
+    "step": "scenario 4 retour GitOps",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:36:09.052751+00:00",
+    "step": "scenario 5 alerte resolue",
+    "data": "OK"
+  },
+  {
+    "time": "2026-11-16T17:36:09.063268+00:00",
+    "step": "scenario 5 resolution",
+    "data": [
+      {
+        "metric": {
+          "__name__": "argocd_app_info",
+          "autosync_enabled": "true",
+          "container": "argocd-application-controller",
+          "dest_namespace": "demo",
+          "dest_server": "https://kubernetes.default.svc",
+          "endpoint": "metrics",
+          "exported_namespace": "argocd",
+          "health_status": "Healthy",
+          "instance": "10.244.0.11:8082",
+          "job": "argocd-metrics",
+          "name": "demo",
+          "namespace": "argocd",
+          "pod": "argocd-application-controller-0",
+          "project": "default",
+          "repo": "https://github.com/eyamakni/tp4-devops",
+          "service": "argocd-metrics",
+          "sync_status": "Synced"
+        },
+        "value": [
+          1794850569.062,
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "time": "2026-11-16T17:36:12.135571+00:00",
+    "step": "fix: terminer repetition avec configuration initiale saine",
+    "data": "61137a91445b772dbbba9f7bf8e48b2b6290b7b8"
+  },
+  {
+    "time": "2026-11-16T17:36:38.616291+00:00",
+    "step": "etat final sain",
+    "data": "OK"
+  }
+]
