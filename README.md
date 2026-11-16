@@ -130,3 +130,22 @@ Profil local : stockage éphémère, pas de HA ni notification externe, projet A
 - [Métriques ArgoCD](https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/)
 - [Chart versionné](https://github.com/prometheus-community/helm-charts/tree/kube-prometheus-stack-69.8.2/charts/kube-prometheus-stack)
 - [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
+
+## Vérification fonctionnelle et répétition automatisée
+
+Après le bootstrap, on peut lancer tous les port-forward dans des processus cachés :
+
+```powershell
+powershell -File scripts/start-access.ps1
+python -B scripts/verify-observability.py
+```
+
+Les logs sont dans artifacts/. Ces accès sont temporaires et doivent être relancés après un redémarrage. Ne pas lancer plusieurs fois sur les mêmes ports.
+
+Pour répéter réellement les scénarios sur kind-tp4-gitops :
+
+```powershell
+python -B scripts/rehearse.py
+```
+
+Cette commande crée et pousse des commits, déclenche une panne volontaire, attend Firing, effectue le rollback via l'API ArgoCD, revert la panne et restaure deux répliques. Exiger un dépôt sans modifications locales. Les preuves horodatées vont dans artifacts/rehearsal.json. Le rollback API est équivalent à l'action du contrôleur mais ne remplace pas la démonstration UI à effectuer lors de la soutenance.
